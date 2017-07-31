@@ -1,7 +1,9 @@
 package net.qiujuer.web.italker.push.service;
 
+import net.qiujuer.web.italker.push.bean.api.account.RegisterModel;
 import net.qiujuer.web.italker.push.bean.db.User;
 
+import javax.jws.soap.SOAPBinding;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
@@ -29,6 +31,18 @@ public class AccountService {
     public User post() {
         User user = new User();
         user.setName("美女");
+        user.setSex(2);
+        return user;
+    }
+
+
+    @POST
+    @Path("/register")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public User register(RegisterModel registerModel) {
+        User user = new User();
+        user.setName(registerModel.getName());
         user.setSex(2);
         return user;
     }
